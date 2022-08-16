@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Converter="clr-namespace:Ejercicio31AGMVVM.Converters"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="CurrentPage"
+             x:Class="Ejercicio31AGMVVM.Views.ListEmployeePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:Base64ToImage x:Key="Base64ToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Label Text="LISTA EMPLEADOS" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center" Padding="10"
+                 TextTransform="Uppercase" />
+        <StackLayout Padding="5">
+            
+            <ListView 
+                      Grid.Row="1" 
+                      ItemsSource="{Binding ListEmployee}" 
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <ViewCell>
+
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           IconImageSource="delete.png"
+                                           Command="{Binding Source={x:Reference CurrentPage}, Path=BindingContext.DeleteEmployeeCommand}"
+                                           CommandParameter="{Binding .}"/>
+
+                                        <SwipeItem Text="Update"
+                                           BackgroundColor="Blue"
+                                           IconImageSource="edit.png"
+                                           Command="{Binding Source={x:Reference CurrentPage}, Path=BindingContext.UpdateEmployeeCommand}"
+                                           CommandParameter="{Binding .}"/>
+
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image  Grid.RowSpan="1"
+                                       Grid.Column="0"
+                                       Source="{Binding Photo,  Converter={StaticResource Base64ToImage}}"
+                                       Aspect="AspectFit"
+                                           
+                                       HeightRequest="35"
+                                       WidthRequest="35" />
+
+
+                                    <Grid Grid.Column="1">
+                                        <Label FontSize="15"
+                                       Margin="5,0,0,0"
+                                       HorizontalOptions="StartAndExpand" 
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold,Italic"
+                                       Grid.Row="0"
+                                       >
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="Name"/>
+                                                    <Binding Path="LastName"/>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+
+                                        <Label FontSize="13"
+                                       Margin="5,0,0,0"
+                                       HorizontalOptions="StartAndExpand" 
+                                       VerticalOptions="Center"
+                                       Grid.Row="1"
+                                       >
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Position"/>
+
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+
+                                    </Grid>
+
+                                </Grid>
+                            </SwipeView>
+
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

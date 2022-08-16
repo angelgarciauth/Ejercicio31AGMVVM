@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Converter="clr-namespace:Ejercicio31AGMVVM.Converters"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Ejercicio31AGMVVM.Views.AddEmployeePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:Base64ToImage x:Key="Base64ToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="GUARDAR EMPLEADO" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center" Padding="10"
+                 TextTransform="Uppercase" />
+            <StackLayout Padding="15, 0">
+                <Image  x:Name="imgPerson"
+                Source="person.png"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" 
+                WidthRequest="200"
+                HeightRequest="170"
+                IsVisible="{Binding IsImageDefault}">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CapturePhotoCommand}"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+                <Image  x:Name="imgPersonB64"
+                Source="{Binding Photo,  Converter={StaticResource Base64ToImage}}"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" 
+                WidthRequest="300"
+                HeightRequest="220"
+                IsVisible="{Binding IsImageUpdate}">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CapturePhotoCommand}"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+
+                
+                <Entry Text="{Binding Name}" 
+               Placeholder="Nombres"
+               Keyboard="Text"
+               Margin="0"
+               />
+
+                
+                <Entry Text="{Binding LastName}" 
+               Placeholder="Apellidos"
+               Keyboard="Text"/>
+
+                
+                <Entry Text="{Binding Age}" 
+               Placeholder="Edad"
+               Keyboard="Numeric"/>
+                
+                <Entry Text="{Binding Position}" 
+               Placeholder="Cargo o Puesto"
+               Keyboard="Text"/>
+
+                <Entry Text="{Binding Address}" 
+               Placeholder="Direccion"
+               Keyboard="Text"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition  Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Button BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="SAVE" TextColor="White" Command="{Binding AddCommand}" />
+                    <Button BackgroundColor="DodgerBlue" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Text="LISTA" TextColor="White"  Command="{Binding ListCommand}"/>
+                    
+                </Grid>
+                
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>

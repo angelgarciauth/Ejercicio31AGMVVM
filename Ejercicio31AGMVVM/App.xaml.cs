@@ -10,7 +10,7 @@ namespace Ejercicio31AGMVVM
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Views.AddEmployeePage());
         }
 
         protected override void OnStart()
