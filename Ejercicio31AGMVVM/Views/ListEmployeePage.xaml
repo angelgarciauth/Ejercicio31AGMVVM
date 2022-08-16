@@ -2,9 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Converter="clr-namespace:Ejercicio31AGMVVM.Converters"
-             NavigationPage.HasNavigationBar="False"
              x:Name="CurrentPage"
              x:Class="Ejercicio31AGMVVM.Views.ListEmployeePage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                     Clicked="ToolbarItem_Clicked"
+                     IconImageSource="empleado.png"
+                     Priority="0"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Converter:Base64ToImage x:Key="Base64ToImage" />
@@ -12,9 +20,8 @@
     </ContentPage.Resources>
 
     <StackLayout>
-        <Label Text="LISTA EMPLEADOS" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center" Padding="10"
-                 TextTransform="Uppercase" />
-        <StackLayout Padding="5">
+        
+        <StackLayout >
             
             <ListView 
                       Grid.Row="1" 
@@ -52,14 +59,15 @@
                                         <ColumnDefinition Width="50" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <Image  Grid.RowSpan="1"
                                        Grid.Column="0"
                                        Source="{Binding Photo,  Converter={StaticResource Base64ToImage}}"
                                        Aspect="AspectFit"
-                                           
-                                       HeightRequest="35"
-                                       WidthRequest="35" />
+                                       HeightRequest="45"
+                                       WidthRequest="45">
+                                            
+                                      </Image>
 
 
                                     <Grid Grid.Column="1">

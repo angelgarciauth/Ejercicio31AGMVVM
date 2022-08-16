@@ -89,7 +89,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\empleado.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ejercicio31AGMVVM\Ejercicio31AGMVVM.csproj">
       <Project>{2D1DB3A3-DC28-46FF-B42E-CD79966C6E5F}</Project>

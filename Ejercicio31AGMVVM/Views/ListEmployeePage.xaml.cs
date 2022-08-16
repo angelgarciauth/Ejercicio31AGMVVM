@@ -26,5 +26,10 @@ namespace Ejercicio31AGMVVM.Views
             base.OnAppearing();
             listViewModels.recharge();
         }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddEmployeePage());
+        }
     }
 }

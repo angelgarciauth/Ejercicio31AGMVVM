@@ -2,8 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Converter="clr-namespace:Ejercicio31AGMVVM.Converters"
-             NavigationPage.HasNavigationBar="False"
+             
              x:Class="Ejercicio31AGMVVM.Views.AddEmployeePage">
+
+   
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Converter:Base64ToImage x:Key="Base64ToImage" />
@@ -12,7 +15,7 @@
 
     <ScrollView>
         <StackLayout>
-            <Label Text="GUARDAR EMPLEADO" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center" Padding="10"
+            <Label Text="GUARDAR EMPLEADO " FontAttributes="Bold, Italic" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center" Padding="10"
                  TextTransform="Uppercase" />
             <StackLayout Padding="15, 0">
                 <Image  x:Name="imgPerson"
@@ -82,7 +85,7 @@
 
 
                     <Button BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="SAVE" TextColor="White" Command="{Binding AddCommand}" />
-                    <Button BackgroundColor="DodgerBlue" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Text="LISTA" TextColor="White"  Command="{Binding ListCommand}"/>
+                   
                     
                 </Grid>
                 

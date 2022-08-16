@@ -14,6 +14,7 @@ namespace Ejercicio31AGMVVM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEmployeePage : ContentPage
     {
+       
         public AddEmployeePage(string option = "Save", Employee employee = null)
         {
             InitializeComponent();
@@ -24,7 +25,14 @@ namespace Ejercicio31AGMVVM.Views
             else
             {
                 BindingContext = new AddViewModels(imgPersonB64, option, employee);
+                
             }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
         }
     }
 }

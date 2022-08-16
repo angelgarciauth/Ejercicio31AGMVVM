@@ -159,8 +159,12 @@ namespace Ejercicio31AGMVVM.ViewModels
                 bool conf = await services.UpdateEmployee(employee, key);
                 if (conf)
                 {
+                    
                     await Application.Current.MainPage.DisplayAlert("Advertencia", "Updated successfully", "OK");
-                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                    //await Application.Current.MainPage.Navigation.PopModalAsync();
+                    ListEmployee();
+
+
                 }
                 else
                 {
@@ -173,6 +177,7 @@ namespace Ejercicio31AGMVVM.ViewModels
                 if (conf)
                 {
                     await Application.Current.MainPage.DisplayAlert("Advertencia", "successfully added", "OK");
+                    clean();
                 }
                 else
                 {
@@ -184,7 +189,7 @@ namespace Ejercicio31AGMVVM.ViewModels
 
         private async void ListEmployee()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new ListEmployeePage());
+            await Application.Current.MainPage.Navigation.PushAsync(new ListEmployeePage());
         }
 
         public void clean()
